@@ -28,6 +28,9 @@ module.exports = {
       "@typescript-eslint/member-delimiter-style": "off",
       "@typescript-eslint/no-empty-function": "off",
       "@typescript-eslint/no-floating-promises": "off",
+      "prettier/prettier": ["error",{
+        "endOfLine": "auto"}
+      ]
     },
   };
   
