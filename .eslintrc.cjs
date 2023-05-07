@@ -30,7 +30,10 @@ module.exports = {
       "@typescript-eslint/no-floating-promises": "off",
       "prettier/prettier": ["error",{
         "endOfLine": "auto"}
-      ]
+      ],
+      '@typescript-eslint/promise-function-async': 'off',
+      '@typescript-eslint/restrict-plus-operands': 'off',
+      '@typescript-eslint/strict-boolean-expressions': 'off',
     },
   };
   
