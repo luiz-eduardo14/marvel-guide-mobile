@@ -1,7 +1,5 @@
 export interface CardCharacterProps {
   title: string;
-  image: {
-    src: string;
-  };
-  description: string;
+  imageURL: string;
+  description: string | null;
 }

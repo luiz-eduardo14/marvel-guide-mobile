@@ -10,4 +10,6 @@ export interface CharacterEntity {
   imageURL: string;
 
   resourceURI: string;
+
+  name: string;
 }
