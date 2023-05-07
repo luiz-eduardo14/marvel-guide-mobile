@@ -1,30 +1,34 @@
-import { Heading, Image, VStack } from 'native-base';
+import { Heading, Image, Text, VStack, View } from 'native-base';
 import { CardCharacterProps } from './types/CardCharacter';
 
 export function CardCharacter({
   title,
   description,
-  image,
+  imageURL,
 }: CardCharacterProps) {
   return (
-    <VStack
-      borderRadius="2xl"
-      flex={0.29}
-      width="96"
-      bg="red.700"
-      marginTop={2}
-    >
-      <Heading fontWeight={'extrabold'} fontSize="2xl" textAlign="center">
-        {title}
+    <VStack borderRadius="2xl" width="96" paddingBottom={4}>
+      <Heading textAlign="center" paddingBottom={2} justifyContent={'center'}>
+        <View>
+          <Text
+            fontSize="3xl"
+            fontWeight={'black'}
+            fontFamily={'Bebas-Regular'}
+            color={'white'}
+          >
+            {title}
+          </Text>
+        </View>
       </Heading>
       <Image
         resizeMethod="resize"
         source={{
-          uri: image.src,
+          uri: imageURL,
           method: 'GET',
         }}
-        alt={title}
-        size="65%"
+        alt={'image'}
+        width={'72'}
+        height={'48'}
         marginLeft="auto"
         marginRight="auto"
         borderRadius="lg"
