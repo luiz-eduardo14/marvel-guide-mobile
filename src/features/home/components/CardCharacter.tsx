@@ -1,4 +1,4 @@
-import { Heading, Image, Text, VStack, View } from 'native-base';
+import { Center, Heading, Image, Text, VStack, View } from 'native-base';
 import { CardCharacterProps } from './types/CardCharacter';
 
 export function CardCharacter({
@@ -7,7 +7,7 @@ export function CardCharacter({
   imageURL,
 }: CardCharacterProps) {
   return (
-    <VStack borderRadius="2xl" width="96" paddingBottom={4}>
+    <VStack paddingBottom={4}>
       <Heading textAlign="center" paddingBottom={2} justifyContent={'center'}>
         <View>
           <Text
@@ -20,19 +20,19 @@ export function CardCharacter({
           </Text>
         </View>
       </Heading>
-      <Image
-        resizeMethod="resize"
-        source={{
-          uri: imageURL,
-          method: 'GET',
-        }}
-        alt={'image'}
-        width={'72'}
-        height={'48'}
-        marginLeft="auto"
-        marginRight="auto"
-        borderRadius="lg"
-      />
+      <Center>
+        <Image
+          resizeMethod="resize"
+          source={{
+            uri: imageURL,
+            method: 'GET',
+          }}
+          alt={'image'}
+          width={64}
+          height={48}
+          borderRadius="lg"
+        />
+      </Center>
     </VStack>
   );
 }
