@@ -3,19 +3,14 @@ import { Icon } from 'native-base';
 import { Path } from 'react-native-svg';
 
 interface MarvelIconProps {
-  size?: string | number;
+  size?: number;
   fill?: string;
   width?: number;
   height?: number;
 }
 const MarvelIcon = ({ width = 2500, height = 1000, size }: MarvelIconProps) => {
   return (
-    <Icon
-      width="100%"
-      height="100%"
-      size={size ?? '220px'}
-      viewBox="0 0 500 200"
-    >
+    <Icon size={size} viewBox="0 0 500 200">
       <Path fill="#f0141e" d="M0 0h500v200H0z" />
       <Path
         fill="#fff"
