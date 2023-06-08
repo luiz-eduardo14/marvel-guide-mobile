@@ -1,5 +1,6 @@
 import { NativeBaseProvider, extendTheme } from 'native-base';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/features/home';
@@ -21,12 +22,21 @@ const theme = extendTheme({
 
 const queryClient = new QueryClient();
 
+const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <NativeBaseProvider theme={theme}>
-          <Home />
+          <Stack.Navigator
+            initialRouteName="Home"
+            screenOptions={{
+              headerShown: false,
+            }}
+          >
+            <Stack.Screen name="Home" component={Home} />
+          </Stack.Navigator>
         </NativeBaseProvider>
       </NavigationContainer>
     </QueryClientProvider>
