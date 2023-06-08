@@ -1,13 +1,5 @@
-import {
-  Box,
-  Button,
-  Center,
-  HStack,
-  ScrollView,
-  Spinner,
-  Text,
-  View,
-} from 'native-base';
+/* eslint-disable @typescript-eslint/no-misused-promises */
+import { Box, Center, HStack, ScrollView, Spinner } from 'native-base';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useCallback } from 'react';
 import { getCharactersPaginate } from '../../services/character';
@@ -15,6 +7,7 @@ import { useFonts } from 'expo-font';
 import { CardCharacter } from './components/CardCharacter';
 import * as SplashScreen from 'expo-splash-screen';
 import { useInfiniteQuery } from 'react-query';
+import { MarvelHeader } from './components/MarvelHeader';
 
 export default function Home() {
   const [isLoadFont] = useFonts({
@@ -59,11 +52,19 @@ export default function Home() {
   }
 
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <Center bg={'red.600'} px={4} flex={1} safeArea onLayout={onLayoutRootView}>
-      <Box flex={0.8}>
+      <MarvelHeader />
+      <Box flex={0.75}>
         <SafeAreaView>
-          <ScrollView>
+          <ScrollView
+            onMomentumScrollEnd={() => {
+              if (hasNextPage && !isFetchingNextPage) {
+                fetchNextPage();
+              }
+            }}
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+          >
             {dataCharacters?.pages
               ?.flatMap((value) => value.items)
               .map((character) => (
@@ -77,25 +78,6 @@ export default function Home() {
           </ScrollView>
         </SafeAreaView>
       </Box>
-      <View flex={0.2} justifyContent={'center'}>
-        <Button
-          borderRadius={'sm'}
-          disabled={!hasNextPage && !isFetchingNextPage}
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onPress={() => fetchNextPage()}
-        >
-          <Text color={'white'} fontSize={'3xl'} fontFamily={'Bebas-Regular'}>
-            {isFetchingNextPage ? (
-              <>
-                <Spinner color={'white'} />
-                <Text> Loading...</Text>
-              </>
-            ) : (
-              'Load more...'
-            )}
-          </Text>
-        </Button>
-      </View>
     </Center>
   );
 }
