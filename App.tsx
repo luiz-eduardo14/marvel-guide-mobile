@@ -1,16 +1,10 @@
-import React from 'react';
-import {
-  NativeBaseProvider,
-  extendTheme,
-  Box,
-  HStack,
-  Center,
-} from 'native-base';
+import { NativeBaseProvider, extendTheme } from 'native-base';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/features/home';
-import MarvelIcon from './src/icon/MarvelIcon';
+import { LogBox } from 'react-native';
+LogBox.ignoreLogs(['Setting a timer for a long period of time']);
 
 // Define the config
 const theme = extendTheme({
@@ -32,23 +26,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
         <NativeBaseProvider theme={theme}>
-          <Box flex={1} flexDirection="column">
-            <HStack safeArea bg="red.600" flex={0.2}>
-              <Box width="100%">
-                <Center
-                  justifyContent="center"
-                  alignItems="center"
-                  marginLeft="auto"
-                  flexDirection="row"
-                  width="100%"
-                  marginBottom={0}
-                >
-                  <MarvelIcon size={180} />
-                </Center>
-              </Box>
-            </HStack>
-            <Home />
-          </Box>
+          <Home />
         </NativeBaseProvider>
       </NavigationContainer>
     </QueryClientProvider>
