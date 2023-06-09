@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Home from './src/features/home';
 import { LogBox } from 'react-native';
+import { Screen } from './src/interfaces/screen.enum';
 LogBox.ignoreLogs(['Setting a timer for a long period of time']);
 
 // Define the config
@@ -30,12 +31,12 @@ export default function App() {
       <NavigationContainer>
         <NativeBaseProvider theme={theme}>
           <Stack.Navigator
-            initialRouteName="Home"
+            initialRouteName={Screen.HOME}
             screenOptions={{
               headerShown: false,
             }}
           >
-            <Stack.Screen name="Home" component={Home} />
+            <Stack.Screen name={Screen.HOME} component={Home} />
           </Stack.Navigator>
         </NativeBaseProvider>
       </NavigationContainer>

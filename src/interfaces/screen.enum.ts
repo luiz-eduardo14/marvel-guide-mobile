@@ -1,3 +1,4 @@
 export enum Screen {
-  Home = 'Home',
+  HOME = 'home',
+  CHARACTER = 'character',
 }
