@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { Box, Center, FlatList, ScrollView } from 'native-base';
+import { Box, Center, FlatList } from 'native-base';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useCallback } from 'react';
 import { getCharactersPaginate } from '../../services/character';
@@ -37,7 +37,6 @@ export default function Home() {
         <Box flex={0.75}>
           <SafeAreaView>
             <FlatList
-              horizontal={false}
               onEndReached={() => {
                 if (hasNextPage && !isFetchingNextPage) {
                   fetchNextPage();
